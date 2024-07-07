@@ -17,10 +17,19 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
     await this.$connect();
     this.logger.log('database connected')
   }
+
+
+
   create(createOrderDto: CreateOrderDto) {
-    this.order.create({
-      data: createOrderDto
-    })
+
+    return {
+      service: 'Orders Microservice',
+      createOrderDto: createOrderDto
+    }
+
+
+    //this.order.create({
+    //  data: createOrderDto})
   }
 
   async findAll(orderPaginationDto: OrderPaginationDto) {
@@ -75,7 +84,7 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
   async changeStatus(changeOrderStatusDto: ChangeOrderStatusDto) {
 
     const { id, status } = changeOrderStatusDto;
-    
+
     const order = await this.findOne(id);
     if (order.status == status) {
       return order;
