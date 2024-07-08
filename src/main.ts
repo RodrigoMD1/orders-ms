@@ -22,7 +22,7 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
   })
 
-  logger.log(`microservice running on port ${envs.port}`);
+  logger.log(`Orders microservice running on port ${envs.port}`);
 
 
 }
